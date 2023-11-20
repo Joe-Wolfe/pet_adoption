@@ -1,1 +1,35 @@
-{%extends base.html%}
+{% extends 'base.html'%}
+
+{%block content%}
+<h2>Add a Pet</h2>
+
+
+<form id='add_pet_form' method="POST">
+
+    {{ form.hidden_tag()}}
+
+    {%for field in form if field.widget.input_type != 'hidden' %}
+
+    <p>
+        {{field.label}}
+        {%if field.flags.required %}
+        <strong>*</strong>
+        {%endif%}
+        {{field}}
+        {%if field.errors%}
+    <ul>
+        {%for error in field.errors%}
+        <li>{{error}}</li>
+        {%endfor%}
+    </ul>
+    {%endif%}
+    </p>
+    {% endfor %}
+    <p><sup>* required fields</sup></p>
+    <p>
+        <button type='submit'>Add Pet</button>
+    </p>
+
+
+</form>
+{%endblock%}

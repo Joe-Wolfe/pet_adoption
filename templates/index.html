@@ -11,14 +11,18 @@
 <h3>Available Pets</h3>
 <ul>
     {%for pet in pets%}
-    <li style="list-style-type: none;"><img src="{{pet.photo_url}}" alt="{{pet.name}} the {{pet.species}}">
+    <li style="list-style-type: none;">
+        <img src="{{pet.photo_url}}" width="100" height="100">
+        {{pet.name}} the {{pet.species}}
         {% if pet.available %}
         <strong>Available</strong>
         {% endif %}
     </li>
     {%endfor%}
 </ul>
-
-
 {%endif%}
+
+<h4>Have a pet that needs adoption?</h4>
+<a class='btn btn-success' href='/add_pet'>Add a Pet</a>
+
 {%endblock%}
