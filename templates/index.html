@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{%block content%}
+<h2>Home</h2>
+<p>Welcome to Pet Adoption, a site for finding your next pet.</p>
+
+{%if not pets%}
+<p>Sorry, no pets are available right now.</p>
+
+{%else%}
+<h3>Available Pets</h3>
+<ul>
+    {%for pet in pets%}
+    <li style="list-style-type: none;"><img src="{{pet.photo_url}}" alt="{{pet.name}} the {{pet.species}}">
+        {% if pet.available %}
+        <strong>Available</strong>
+        {% endif %}
+    </li>
+    {%endfor%}
+</ul>
+
+
+{%endif%}
+{%endblock%}
