@@ -1,0 +1,45 @@
+{% extends 'base.html'%}
+
+{%block content%}
+
+<h2>{{pet.name}}</h2>
+
+{% if pet.photo_url %}
+<img src="{{pet.photo_url}}" width="200" height="200">
+{% endif %}
+
+<p>Species: {{pet.species}}</p>
+
+{% if pet.age %}
+<p>Age: {{pet.age}}</p>
+{% endif %}
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    <div>
+        {{ form.photo_url.label }} {{ form.photo_url() }}
+        {% for error in form.photo_url.errors %}
+        <span class="error">{{ error }}</span>
+        {% endfor %}
+    </div>
+
+    <div>
+        {{ form.notes.label }} {{ form.notes() }}
+        {% for error in form.notes.errors %}
+        <span class="error">{{ error }}</span>
+        {% endfor %}
+    </div>
+
+    <div>
+        {{ form.available.label }} {{ form.available() }}
+        {% for error in form.available.errors %}
+        <span class="error">{{ error }}</span>
+        {% endfor %}
+    </div>
+
+    <button type='submit'>Add Pet</button>
+</form>
+<a href='/' class='btn btn-dark'>Home</a>
+
+{%endblock%}

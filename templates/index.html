@@ -12,8 +12,10 @@
 <ul>
     {%for pet in pets%}
     <li style="list-style-type: none;">
-        <img src="{{pet.photo_url}}" width="100" height="100">
-        {{pet.name}} the {{pet.species}}
+        <a href="{{pet.id}}">
+            <img src="{{pet.photo_url}}" width="100" height="100">
+            {{pet.name}} the {{pet.species}}
+        </a>
         {% if pet.available %}
         <strong>Available</strong>
         {% endif %}
@@ -23,6 +25,6 @@
 {%endif%}
 
 <h4>Have a pet that needs adoption?</h4>
-<a class='btn btn-success' href='/add_pet'>Add a Pet</a>
+<a class='btn btn-success' href='/add'>Add a Pet</a>
 
 {%endblock%}
